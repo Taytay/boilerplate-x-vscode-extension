@@ -1,0 +1,42 @@
+{
+  "name": "jupyter-restart-run-all-cells",
+  "displayName": "Jupyter Restart and Run All Cells",
+  "description": "VSCode extension that adds a single command to restart and run all cells in a Jupyter notebook.",
+  "version": "1.0.0",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-github-username/jupyter-restart-run-all-cells.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-github-username/jupyter-restart-run-all-cells/issues"
+  },
+  "homepage": "https://github.com/your-github-username/jupyter-restart-run-all-cells",
+  "license": "MIT",
+  "keywords": [
+    "jupyter",
+    "notebook",
+    "restart",
+    "run",
+    "cells",
+    "vscode",
+    "extension"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "@types/vscode": "^1.60.0"
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+out/
+.vscode/
+.vscode-test/
+.vscodeignore
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/tasks.json
+CHANGELOG.md
+LICENSE
+README.md
+images/
+src/extension.js
+src/commands/restartAndRunAllCells.js
+package.json
+*.log
+*.vsix

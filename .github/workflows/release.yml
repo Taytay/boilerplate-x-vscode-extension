@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Build extension
+        run: npm run build
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.ref }}
+          release_name: Release v${{ github.ref }}
+          body: |
+            Changes in this release:
+            - Added restart and run all cells command
+          draft: false
+          prerelease: false
+      - name: Upload VSIX file
+        uses: actions/upload-artifact@v2
+        with:
+          name: vsix
+          path: ./out/restart-and-run-all-cells-*.vsix
+      - name: Publish extension
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./out/restart-and-run-all-cells-*.vsix
+          asset_name: restart-and-run-all-cells-${{ github.ref }}.vsix
+          asset_content_type: application/vsix
